@@ -1,5 +1,7 @@
 from UsersDef import enter, user_email, user_login, hb_date, dump_json_users, add_user_obj, load_json_users
+from UsersDef import get_data, user_name, set_data, user_password
 import json
+
 def market():
     json_file = load_json_users()
 
@@ -12,9 +14,9 @@ def market():
 
         elif quest.lower() == 'n':
             login = user_login(json_file)
-            name = input('введите Ваше ФИО: ')
+            name = user_name(json_file)
             email = user_email(json_file)
-            password = input('Введите пароль для учетной записи: ')
+            password = user_password()
             happyd = hb_date()
 
             json_file[login] = {'name' : name,
@@ -28,10 +30,13 @@ def market():
             print('Неправильный формат ввода.')
             continue
 
-        q = input('Хотите поменять ФИО? y/n' )
-        if q == 'y':
-            fio = input('Введите ФИО')
-            user_obj.name = fio
+        q = input('Хотите получить или изменить? y/n: ' )
+        if q.lower() == 'y':
+            get_data(user_obj)
+        elif q.lower() == 'n':
+            set_data(user_obj, json_file)
+
+
 
         print(user_obj.name)
 

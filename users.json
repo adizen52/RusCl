@@ -4,5 +4,17 @@
         "email": "qwerty12@mail.ru",
         "happybirtday": "06.05.1996",
         "password": "pass123"
+    },
+    "Marishka1996": {
+        "name": "Lesnichuk Marina Andreevna",
+        "email": "qwerty123@mail.ru",
+        "happybirtday": "1997-05-06",
+        "password": "qwe123"
+    },
+    "MarinaKisa": {
+        "name": "Marina Kisa Pisa",
+        "email": "SosuPisi@mail.ru",
+        "happybirtday": "1996-04-15",
+        "password": "qwe123"
     }
 }

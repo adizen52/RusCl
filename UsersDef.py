@@ -33,6 +33,17 @@ def user_login(data):
         else:
             return login
 
+def user_name(data):
+    while True:
+        name = input('Введите Ваше ФИО \n'
+                     '(в случае двойного имение, фамилии или отчества пишите их через тире: ')
+        if len(name.split()) != 3:
+            ('ФИО должно стостоять из трех! Фамилия, имя отчество.')
+            continue
+        else:
+            return name
+
+
 def user_email(data):
     while True:
         us_email = input('введите вашу почту: ')
@@ -51,6 +62,21 @@ def user_email(data):
             continue
 
 
+def user_password():
+    while True:
+        password = input('Введите пароль: ')
+        set_password = set(password)
+        if len(password) < 6:
+            print('Слишком короткий пароль (меньше 6). Попробуйте новый > 6.')
+            continue
+        if set_password.intersection('1234567890') == 0:
+            print('В Вашем пароле не хватае цифр.')
+            continue
+        if set_password.intersection('QWERTYUIOPASDFGHJKLZXCVBNMЙЦУКЕНГШЩЗХФЫВАПРОЛДЖЭЯЧСМИТЬБЮ') == 0:
+            print('В Вашем пароле не хватаем заглавных букв. Попробуйте снова.')
+            continue
+        return password
+
 
 def hb_date():
     hb = input('Введите Вашу дату рождения в формате: YYYY-MM-DD: ')
@@ -65,3 +91,61 @@ def hb_date():
 def add_user_obj(name):
     user = User.get(name)
     return user
+
+
+def get_data(user_obj):
+    while True:
+        qw = input('Хотите получить 1-login, 2-ФИО, 3-Почту,\n '
+                   '4-ДР, 5-ВСЕ данные о себе (введите цифру)\n'
+                   '6 - ВЫЙТИ из данного меню.: \n')
+        if qw == '1':
+            print(user_obj.login)
+            continue
+        elif qw == '2':
+            print(user_obj.name)
+            continue
+        elif qw == '3':
+            print(user_obj.email)
+            continue
+        elif qw == '4':
+            print(user_obj.happybirthday)
+            continue
+        elif qw == '5':
+            print(user_obj)
+        elif qw == '6':
+            break
+        else:
+            print('Введены не верные данные.')
+
+def set_data(user_obj, json_file):
+    while True:
+        qw = input('Хотите изменить: 1-login, 2-ФИО, 3-Почту,\n '
+                   '4-ДР, 5-изменить пароль, 6 - ВЫЙТИ из данного меню.: \n')
+        if qw == '1':
+            input_login = user_login(json_file)
+            user_obj.login = input_login
+            print(f'Ваш логин изменен на {user_obj.login}')
+            continue
+        elif qw == '2':
+            input_name = user_name()
+            user_obj.name = input_name
+            print(f'Ваше ФИО заменено на {user_obj.name}')
+            continue
+        elif qw == '3':
+            input_email = user_email(json_file)
+            user_obj.email = input_email
+            print(f'Ваш email заменен на {user_obj.email}')
+            continue
+        elif qw == '4':
+            input_hb = hb_date()
+            user_obj.happybirthday = input_hb
+            print(f'Ваша дата рождения изменена на {user_obj.happybirthday}')
+            continue
+        elif qw == '5':
+            input_password = user_password()
+            user_obj.password = input_password
+            print(f'Ваш пароль изменен на: {user_obj.password}')
+        elif qw == '6':
+            break
+        else:
+            print('Введены не верные данные.')
