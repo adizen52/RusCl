@@ -69,14 +69,14 @@ def user_password():
         if len(password) < 6:
             print('Слишком короткий пароль (меньше 6). Попробуйте новый > 6.')
             continue
-        if set_password.intersection('1234567890') == 0:
+        elif len(set_password.intersection('1234567890')) == 0:
             print('В Вашем пароле не хватае цифр.')
             continue
-        if set_password.intersection('QWERTYUIOPASDFGHJKLZXCVBNMЙЦУКЕНГШЩЗХФЫВАПРОЛДЖЭЯЧСМИТЬБЮ') == 0:
+        elif len(set_password.intersection('QWERTYUIOPASDFGHJKLZXCVBNMЙЦУКЕНГШЩЗХФЫВАПРОЛДЖЭЯЧСМИТЬБЮ')) == 0:
             print('В Вашем пароле не хватаем заглавных букв. Попробуйте снова.')
             continue
-        return password
-
+        else:
+            return password
 
 def hb_date():
     hb = input('Введите Вашу дату рождения в формате: YYYY-MM-DD: ')
@@ -120,27 +120,24 @@ def get_data(user_obj):
 def set_data(user_obj, json_file):
     while True:
         qw = input('Хотите изменить: 1-login, 2-ФИО, 3-Почту,\n '
-                   '4-ДР, 5-изменить пароль, 6 - ВЫЙТИ из данного меню.: \n')
+                   '4-ДР, 5-пароль, 6 - ВЫЙТИ из данного меню.: \n')
+        login_one = user_obj.login
         if qw == '1':
             input_login = user_login(json_file)
             user_obj.login = input_login
             print(f'Ваш логин изменен на {user_obj.login}')
-            continue
         elif qw == '2':
-            input_name = user_name()
+            input_name = user_name(json_file)
             user_obj.name = input_name
             print(f'Ваше ФИО заменено на {user_obj.name}')
-            continue
         elif qw == '3':
             input_email = user_email(json_file)
             user_obj.email = input_email
             print(f'Ваш email заменен на {user_obj.email}')
-            continue
         elif qw == '4':
             input_hb = hb_date()
             user_obj.happybirthday = input_hb
             print(f'Ваша дата рождения изменена на {user_obj.happybirthday}')
-            continue
         elif qw == '5':
             input_password = user_password()
             user_obj.password = input_password
@@ -149,3 +146,26 @@ def set_data(user_obj, json_file):
             break
         else:
             print('Введены не верные данные.')
+
+        user_obj.save_data(json_file, login_one)
+        continue
+
+def delete_data(user_obj, json_file):
+    while True:
+        q = input('Если хотите удалить 1-ФИО, 2-почту, 3-ДР, 4-выйти из данного меню: ')
+        if q == '1':
+            del user_obj.name
+            print('Ваше ФИО удалено')
+            continue
+        elif q == '2':
+            del user_obj.email
+            print('Ваша почта удалена')
+            continue
+        elif q == '3':
+            del user_obj.happybirthday
+            print('Ваше день рождение удалено')
+            continue
+        elif q == '4':
+            break
+
+        user_obj.save_data(json_file)

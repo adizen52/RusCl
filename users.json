@@ -1,20 +1,38 @@
 {
-    "Mariska96": {
-        "name": "Marina",
-        "email": "qwerty12@mail.ru",
-        "happybirtday": "06.05.1996",
-        "password": "pass123"
-    },
     "Marishka1996": {
         "name": "Lesnichuk Marina Andreevna",
         "email": "qwerty123@mail.ru",
         "happybirtday": "1997-05-06",
         "password": "qwe123"
     },
-    "MarinaKisa": {
-        "name": "Marina Kisa Pisa",
-        "email": "SosuPisi@mail.ru",
-        "happybirtday": "1996-04-15",
-        "password": "qwe123"
+    "Adizen52": {
+        "name": "Laptev Sergei Alex",
+        "email": "adizen52@yandex.ru",
+        "happybirtday": "1996-10-17",
+        "password": "Qwerty123"
+    },
+    "Qwe": {
+        "name": "Q W R",
+        "email": "qwe@mail.ru",
+        "happybirtday": "1956-10-12",
+        "password": "Qwe123"
+    },
+    "Mari123": {
+        "name": "MARINKA ANDR LES",
+        "email": "qwerty12@mail.ru",
+        "happybirtday": "06.05.1996",
+        "password": "pass123"
+    },
+    "adizen": {
+        "name": "a d i",
+        "email": "Adizen52@yandex.ru",
+        "happybirtday": "1996-10-17",
+        "password": "Qwe123"
+    },
+    "Manager": {
+        "name": "MARINKA ANDR LES",
+        "email": "qwerty12@mail.ru",
+        "happybirtday": "06.05.1996",
+        "password": "pass123"
     }
 }

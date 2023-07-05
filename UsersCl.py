@@ -17,10 +17,6 @@ class User():
     def login(self, input_login):
         self.__login = input_login
 
-    @login.deleter
-    def login(self):
-        self.__login = None
-
     @property
     def name(self):
         return self.__name
@@ -69,7 +65,8 @@ class User():
         return f'Ваши учтеные данные: Логин - f{self.__login},\n' \
                f'                     ФИО - f{self.name}\n' \
                f'                     email - f{self.__email}\n' \
-               f'                     ДР - f{self.__happyd}'
+               f'                     ДР - f{self.__happyd}\n' \
+               f'\n'
 
     @staticmethod
     def get(username):
@@ -78,8 +75,30 @@ class User():
         data = json_file[username]
         return User(login=username, **data)
 
+    def save_data(self, json_file, login_one):
+        data_user = {}
+        data_user['name'] = self.__name
+        data_user['email'] = self.__email
+        data_user['happybirtday'] = self.__happyd
+        data_user['password'] = self.__password
+        json_file[self.__login] = json_file.pop(login_one)
+        with open('users.json', 'w') as users:
+            json.dump(json_file, users, indent=4)
 
 
+class Product:
+
+    def __int__(self, title, description, total, price):
+        self.__title = title
+        self.__description = description
+        self.__total = total
+        self.__price = price
 
 class Order():
-    pass
+    def __init__(self, id, title, description, user):
+        self.__id = id
+        self.__title = title
+        self.description = description
+        self.user = user
+
+

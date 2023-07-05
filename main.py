@@ -1,5 +1,5 @@
 from UsersDef import enter, user_email, user_login, hb_date, dump_json_users, add_user_obj, load_json_users
-from UsersDef import get_data, user_name, set_data, user_password
+from UsersDef import get_data, user_name, set_data, user_password, delete_data
 import json
 
 def market():
@@ -11,6 +11,7 @@ def market():
         if quest.lower() == 'y':
             login = enter(json_file)
             user_obj = add_user_obj(login)
+            break
 
         elif quest.lower() == 'n':
             login = user_login(json_file)
@@ -25,19 +26,30 @@ def market():
                                 'password' : password}
             dump_json_users(json_file)
             user_obj = add_user_obj(login)
+            break
 
         else:
             print('Неправильный формат ввода.')
             continue
 
-        q = input('Хотите получить или изменить? y/n: ' )
-        if q.lower() == 'y':
+    while True:
+
+        q = input('Хотите 1 - получить 2 - изменить 3 - удалить, 4 - выйти: ' )
+        if q == '1':
             get_data(user_obj)
-        elif q.lower() == 'n':
+            continue
+        elif q == '2':
             set_data(user_obj, json_file)
+            continue
+        elif q == '3':
+            delete_data(user_obj, json_file)
+            continue
+        elif q == '4':
+            break
 
 
 
-        print(user_obj.name)
+
+
 
 market()
