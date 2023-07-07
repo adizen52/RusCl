@@ -1,8 +1,8 @@
 {
   "limon": {
-    "title": "Лимон",
-    "description": "Вкусный лимон из таджикистана",
-    "total": 100,
-    "price": 5
+    "title": "yellow limon",
+    "description": "Very beautifull limon",
+    "total": "100",
+    "price": "5"
   }
 }

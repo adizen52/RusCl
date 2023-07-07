@@ -2,6 +2,7 @@ import json
 import validators
 import datetime
 from UsersCl import User
+
 def load_json_users():
     with open('users.json') as users:
        file  = json.load(users)

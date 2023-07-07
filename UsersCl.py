@@ -86,13 +86,22 @@ class User():
             json.dump(json_file, users, indent=4)
 
 
-class Product:
+class Product():
 
     def __int__(self, title, description, total, price):
         self.__title = title
         self.__description = description
         self.__total = total
         self.__price = price
+
+    # @staticmethod
+    # def get_prod_obj(name_prod):
+    #     with open('product.json') as prod:
+    #         json_file_prod = json.load(prod)
+    #     data_prod = json_file_prod[name_prod]
+    #     return Product(**data_prod)
+
+
 
 class Order():
     def __init__(self, id, title, description, user):
