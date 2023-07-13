@@ -1,0 +1,27 @@
+{
+    "Dany": {
+        "Addres": "Nizniy Novgorod, Lenina, 3",
+        "Age": 24,
+        "Car": {
+            "Marka": "Porshe",
+            "Model": "Cayen",
+            "Corobka": "Robot"
+        }
+    },
+    "Robby": {
+        "Age": 15,
+        "Dany": 15
+    },
+    "Mariska": {
+        "Age": 32
+    },
+    "Maroon": {
+        "Age": 18,
+        "Address": {
+            "country": "Russia",
+            "city": "SPB",
+            "street": "Lenina",
+            "house": "2"
+        }
+    }
+}
