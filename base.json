@@ -9,7 +9,6 @@
         }
     },
     "Robby": {
-        "Age": 15,
         "Dany": 15
     },
     "Mariska": {
@@ -22,6 +21,14 @@
             "city": "SPB",
             "street": "Lenina",
             "house": "2"
+        }
+    },
+    "Ruslan": {
+        "Address": {
+            "Country": "Serbia",
+            "Town": "Balkani",
+            "Street": "Fisher",
+            "home": "3"
         }
     }
 }
