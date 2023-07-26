@@ -30,5 +30,17 @@
             "Street": "Fisher",
             "home": "3"
         }
+    },
+    "Sergik": {
+        "Car": {
+            "Marka": "BMW",
+            "Model": "420",
+            "Kuz": "G22"
+        },
+        "address": {
+            "town": "SPB",
+            "street": "Komenda",
+            "house": "19"
+        }
     }
 }

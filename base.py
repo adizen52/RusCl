@@ -9,20 +9,21 @@ class JSON_files():
 
 
 class Base():
+    name_json_file = JSON_files.base
 
-    def load_data(self, name_json):
-        with open(name_json) as file:
+    def load_data(self):
+        with open(self.name_json_file) as file:
             data = json.load(file)
 
         return data
 
-    def dump_data(self, data, name_json):
-        with open(name_json, 'w') as file:
+    def dump_data(self, data):
+        with open(self.name_json_file, 'w') as file:
             json.dump(data, file, indent=4)
 
     def update(self, *keys, **namekeys):
 
-        data = self.load_data(JSON_files.base)
+        data = self.load_data()
 
         if len(keys) == 1:
             data.setdefault(keys[0], {})
@@ -35,16 +36,29 @@ class Base():
             if len(namekeys) == 1:
                 data[keys[0]][keys[1]][keys[2]] = namekeys['value']
 
-        self.dump_data(data, JSON_files.base)
+        self.dump_data(data)
 
         return 'Данные успешно обновлены.'
 
     def value_for_key(self, key):
-        data = self.load_data(JSON_files.base)
+        data = self.load_data()
         return data.get(key, 'Такого ключа нет.')
 
 
-item = Base()
+class User(Base):
+    name_json_file = JSON_files.users
 
-print(item.value_for_key('Dany'))
+    def login(self):
+        data = self.load_data()
+        while True:
+            log = input('Введите Логин: ')
+            if log not in data:
+                return log
+            else:
+                print('Введите логин заново. Такой уже есть.')
+                continue
+
+class Product(Base):
+    name_json_file = JSON_files.product
+
 
